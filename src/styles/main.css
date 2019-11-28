@@ -1,0 +1,41 @@
+body {
+  font-family: Roboto, Lato, Helvetica, sans-serif;
+}
+
+.weather-cards,
+.test {
+  width: 100%;
+  display: flex;
+  text-align: center;
+}
+
+.weather-card {
+  flex: 1;
+  justify-content: space-evenly;
+  border: 1px solid white;
+}
+
+.weather-card:hover {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid grey;
+  border-radius: 0.4em;
+}
+
+.day-of-week {
+  color: grey;
+}
+
+.temps {
+  display: flex;
+  justify-content: center;
+}
+.high-temp,
+.low-temp {
+  margin: 0px;
+  padding: 0 0.4em;
+}
+
+.low-temp {
+  color: grey;
+}
