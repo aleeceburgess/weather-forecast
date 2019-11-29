@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import WeatherCardContainer from "./Components/WeatherCard/WeatherCardContainer";
 
 import "./styles/main.css";
-import "./styles/weather-icons.css";
 
 class App extends React.Component {
   render() {
