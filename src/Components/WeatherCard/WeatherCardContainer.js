@@ -64,7 +64,16 @@ class WeatherCardContainer extends React.Component {
         currentDayIndex++;
         if (currentDayIndex > 4) break
       }
-      
+
+      // set max temprature
+      if(fiveDayAPIDataList[i].main.temp_max > fiveDayForecast[currentDayIndex].maxTemp || fiveDayForecast[currentDayIndex].maxTemp === 'N/A'){
+        fiveDayForecast[currentDayIndex].maxTemp = fiveDayAPIDataList[i].main.temp_max;
+      }
+
+      // set min temprature
+      if(fiveDayAPIDataList[i].main.temp_min < fiveDayForecast[currentDayIndex].minTemp || fiveDayForecast[currentDayIndex].minTemp === 'N/A'){
+        fiveDayForecast[currentDayIndex].minTemp = fiveDayAPIDataList[i].main.temp_min;
+      }
       
         
       // grab all weather types and push into seperate arrays for different days
