@@ -1,11 +1,11 @@
 import React from "react";
 
 export const WeatherCard = props => {
-  return props.daysofWeek.map((days, i) => {
+  return props.fiveDayForecast.map((forecast, i) => {
     return (
-      <div className="weather-card">
-        <p className="day-of-week">{days}</p>
-        <span className="icon-weather icon-drizzle" aria-label="windy" />
+      <div className="weather-card" key={i}>
+        <p className="day-of-week">{forecast.dayOfWeek}</p>
+        <img src={`http://openweathermap.org/img/wn/${forecast.weatherIcon}@2x.png`} alt={forecast.weatherType} />
         <div className="temps">
           <p className="high-temp">50deg</p>
           <p className="low-temp">1deg</p>
