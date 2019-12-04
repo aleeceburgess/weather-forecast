@@ -1,8 +1,8 @@
 import React from "react";
 
-import { WeatherCard } from "./WeatherCard";
+import { UpcomingWeatherCard } from "./UpcomingWeatherCard";
 
-class WeatherCardContainer extends React.Component {
+class UpcomingWeatherCardContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -101,9 +101,9 @@ class WeatherCardContainer extends React.Component {
 
   render = () => { 
     return (
-      <WeatherCard fiveDayForecast={this.state.fiveDayForecastState} />
+      <UpcomingWeatherCard fiveDayForecast={this.state.fiveDayForecastState} />
     );
   }
 }
 
-export default WeatherCardContainer;
+export default UpcomingWeatherCardContainer;
