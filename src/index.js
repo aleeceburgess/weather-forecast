@@ -8,68 +8,82 @@ import Header from "./Components/Header/Header";
 import "./styles/main.css";
 
 class App extends React.Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
-      location: 'London',
+      location: "London",
+      locationCountry: "United Kingdom",
       locationDate: 0
-    }
+    };
   }
 
   componentDidMount = () => {
-    this.getLocalDate();
-  }
+    this.getLocalDate(this.state.location);
+  };
 
-  getLocalDate = () => {
-    let offsetHours = 0;
-    switch (this.state.location) {
-      case 'London':
+  getLocalDate = newLocation => {
+    let offsetHours;
+    let updatedCountry;
+    switch (newLocation) {
+      case "London":
         offsetHours = 0;
+        updatedCountry = "United Kingdom";
         break;
-      case 'Prague':
+      case "Prague":
         offsetHours = +1;
+        updatedCountry = "Czechia";
         break;
-      case 'Perth':
+      case "Perth":
         offsetHours = +8;
+        updatedCountry = "Australia";
         break;
-      case 'Tokyo':
+      case "Tokyo":
         offsetHours = +9;
+        updatedCountry = "Japan";
         break;
-      case 'San Fransico':
+      case "San Fransico":
         offsetHours = -8;
+        updatedCountry = "United States";
         break;
       default:
-        offsetHours = 0
+        offsetHours = 0;
+        updatedCountry = this.state.locationCountry;
     }
     this.setState({
-      locationDate: new Date( new Date() + offsetHours * 3600 * 1000).toDateString()
-    })
-  }
-
-  updateLocationClick = (newLocation) => {
-    this.getLocalDate();
-    this.setState({
-      location: newLocation
+      locationDate: new Date(
+        new Date() + offsetHours * 3600 * 1000
+      ).toDateString(),
+      locationCountry: updatedCountry
     });
-  }
+  };
+
+  updateLocationClick = newLocation => {
+    if (newLocation !== "") {
+      this.setState({
+        location: newLocation
+      });
+      this.getLocalDate(newLocation);
+    }
+  };
 
   render() {
     return (
       <div className="App">
-        <Header
-          updateLocationClick={this.updateLocationClick} />
+        <Header updateLocationClick={this.updateLocationClick} />
         <div className="weather-widget">
           <div className="widget-header">
             <h2>Weather report</h2>
-            <p className="location">{this.state.locationDate} | {this.state.location}</p>
+            <p className="location">
+              {this.state.locationDate} | {this.state.location},{" "}
+              {this.state.locationCountry}
+            </p>
           </div>
           <div className="current-weather">
             <CurrentWeather />
           </div>
           <div className="upcoming-weather-cards">
-            <UpcomingWeatherCardContainer />
+            <UpcomingWeatherCardContainer location={this.state.location} />
           </div>
         </div>
       </div>
