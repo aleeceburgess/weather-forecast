@@ -105,7 +105,6 @@ class UpcomingWeatherCardContainer extends React.Component {
   };
 
   findMostCommonString = strings => {
-    console.log(strings);
     return strings.sort((a, b) => strings.filter(v => v === a).length - strings.filter(v => v === b).length).pop();
   };
 
