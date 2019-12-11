@@ -53,14 +53,12 @@ class UpcomingWeatherCardContainer extends React.Component {
     let fiveDayForecast = [];
     let fiveDayAPIDataList = this.state.fiveDayAPI.list;
     let weatherTypes = [[], [], [], [], []];
-    let weatherIcon = [[], [], [], [], []];
 
     // create forecast obbject
     for (let i = 0; i < 5; i++) {
       fiveDayForecast.push({
         dayOfWeek: "",
         weatherType: "",
-        weatherIcon: "",
         minTemp: "N/A",
         maxTemp: "N/A"
       });
@@ -73,7 +71,6 @@ class UpcomingWeatherCardContainer extends React.Component {
           fiveDayAPIDataList[i].dt * 1000
         );
         fiveDayForecast[currentDayIndex].weatherType = this.findMostCommonString(weatherTypes[currentDayIndex]);
-        fiveDayForecast[currentDayIndex].weatherIcon = this.findMostCommonString(weatherIcon[currentDayIndex]);
 
         currentDayIndex++;
         if (currentDayIndex > 4) break;
@@ -91,7 +88,6 @@ class UpcomingWeatherCardContainer extends React.Component {
 
       // grab all weather types and push into seperate arrays for different days
       weatherTypes[currentDayIndex].push(fiveDayAPIDataList[i].weather[0].description);
-      weatherIcon[currentDayIndex].push(fiveDayAPIDataList[i].weather[0].icon);
     }
 
     //set the state with the 5 day forecast
