@@ -6,31 +6,75 @@ import './WeatherIcons.css';
 class WeatherIconsContainer extends React.Component {
   getWeatherIcon = (weatherIcon) => {
     switch(weatherIcon){
-      case '01d':
-      case '01n':
-        return ['sun']
-      case '02d':
-      case '02n':
-      case '03d':
-      case '03n':
-      case '04d':
-      case '04n':
+      case 'clear sky':
+      return ['sun']
+
+      case 'scattered clouds':
+      case 'few clouds':
+      case 'broken clouds':
+      case 'overcast clouds':
         return ['cloud']
-      case '09d':
-      case '09n':
-        return ['basecloud', 'showers'] //basecloud and icon-showers
-      case '10d':
-      case '10n':
-          return ['basecloud', 'rainy'] //basecloud icon-rainy
-      case '11d':
-      case '11n':
-        return ['basethundercloud', 'thunder'] // basethundercloud icon-thunder
-      case '13d':
-      case '13n':
-        return ['basecloud', 'snowy']  // basecloud icon-snowy
-      case '50d':
-      case '50n':
-        return ['mist'] // icon-mist
+
+      case 'shower rain':
+      case 'light intensity drizzle':
+      case 'drizzle':
+      case 'heavy intensity drizzle':
+      case 'light intensity drizzle rain':
+      case 'drizzle rain':
+      case 'heavy intensity drizzle rain':
+      case 'shower rain and drizzle':
+      case 'heavy shower rain and drizzle':
+      case 'shower drizzle':
+      case 'heavy intensity shower rain':
+      case 'ragged shower rain':
+        return ['basecloud', 'showers']
+
+      case 'light rain':
+      case 'rain':
+      case 'moderate rain':
+      case 'heavy intensity rain':
+      case 'very heavy rain':
+      case 'extreme rain':
+          return ['basecloud', 'rainy']
+
+      case 'thunderstorm':
+      case 'thunderstorm with light rain':
+      case 'thunderstorm with rain':
+      case 'thunderstorm with heavy rain':
+      case 'light thunderstorm':
+      case 'heavy thunderstorm':
+      case 'ragged thunderstorm':
+      case 'thunderstorm with light drizzle':
+      case 'thunderstorm with drizzle':
+      case 'thunderstorm with heavy drizzle':
+        return ['basethundercloud', 'thunder'] 
+        
+      case 'snow':
+      case 'freezing rain':
+      case 'light snow':
+      case 'Heavy snow':
+      case 'Sleet':
+      case 'Light shower sleet':
+      case 'Shower sleet':
+      case 'Light rain and snow':
+      case 'Rain and snow':
+      case 'Light shower snow':
+      case 'Shower snow':
+      case 'Heavy shower snow':
+        return ['basecloud', 'snowy']
+
+      case 'mist':
+      case 'Smoke':
+      case 'Haze':
+      case 'sand/ dust whirls':
+      case 'fog':
+      case 'sand':
+      case 'dust':
+      case 'volcanic ash':
+      case 'squalls':
+      case 'tornado':
+        return ['mist']
+
       default:
         return ['help']
     }
@@ -41,7 +85,7 @@ class WeatherIconsContainer extends React.Component {
     return (
       <div className="weather-icon">
         <WeatherIcons
-          weatherIcon={this.getWeatherIcon(this.props.weatherIcon)} 
+          weatherIcon={this.getWeatherIcon(this.props.weatherType)} 
           weatherType={this.props.weatherType} />
       </div>
     );
