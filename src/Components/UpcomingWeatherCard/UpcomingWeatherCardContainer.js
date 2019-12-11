@@ -15,12 +15,9 @@ class UpcomingWeatherCardContainer extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.location !== this.props.location) {
-      this.setState(
-        {
-          location: this.props.location
-        },
-        this.getWeather
-      );
+      this.setState({
+        location: this.props.location
+      }, this.getWeather);
     }
   };
 
@@ -108,8 +105,7 @@ class UpcomingWeatherCardContainer extends React.Component {
   };
 
   findMostCommonString = strings => {
-    return strings
-      .sort((a, b) => strings.filter(v => v === a).length - strings.filter(v => v === b).length).pop();
+    return strings.sort((a, b) => strings.filter(v => v === a).length - strings.filter(v => v === b).length).pop();
   };
 
   render = () => {
