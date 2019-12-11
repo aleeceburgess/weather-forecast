@@ -15,12 +15,9 @@ class UpcomingWeatherCardContainer extends React.Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.location !== this.props.location) {
-      this.setState(
-        {
-          location: this.props.location
-        },
-        this.getWeather
-      );
+      this.setState({
+        location: this.props.location
+      }, this.getWeather);
     }
   };
 
@@ -75,43 +72,25 @@ class UpcomingWeatherCardContainer extends React.Component {
         fiveDayForecast[currentDayIndex].dayOfWeek = this.getDays(
           fiveDayAPIDataList[i].dt * 1000
         );
-        fiveDayForecast[
-          currentDayIndex
-        ].weatherType = this.findMostCommonString(
-          weatherTypes[currentDayIndex]
-        );
-        fiveDayForecast[
-          currentDayIndex
-        ].weatherIcon = this.findMostCommonString(weatherIcon[currentDayIndex]);
+        fiveDayForecast[currentDayIndex].weatherType = this.findMostCommonString(weatherTypes[currentDayIndex]);
+        fiveDayForecast[currentDayIndex].weatherIcon = this.findMostCommonString(weatherIcon[currentDayIndex]);
 
         currentDayIndex++;
         if (currentDayIndex > 4) break;
       }
 
       // set max temprature
-      if (
-        fiveDayAPIDataList[i].main.temp_max >
-          fiveDayForecast[currentDayIndex].maxTemp ||
-        fiveDayForecast[currentDayIndex].maxTemp === "N/A"
-      ) {
-        fiveDayForecast[currentDayIndex].maxTemp =
-          fiveDayAPIDataList[i].main.temp_max;
+      if ( fiveDayAPIDataList[i].main.temp_max > fiveDayForecast[currentDayIndex].maxTemp || fiveDayForecast[currentDayIndex].maxTemp === "N/A" ) {
+        fiveDayForecast[currentDayIndex].maxTemp = fiveDayAPIDataList[i].main.temp_max;
       }
 
       // set min temprature
-      if (
-        fiveDayAPIDataList[i].main.temp_min <
-          fiveDayForecast[currentDayIndex].minTemp ||
-        fiveDayForecast[currentDayIndex].minTemp === "N/A"
-      ) {
-        fiveDayForecast[currentDayIndex].minTemp =
-          fiveDayAPIDataList[i].main.temp_min;
+      if ( fiveDayAPIDataList[i].main.temp_min < fiveDayForecast[currentDayIndex].minTemp ||fiveDayForecast[currentDayIndex].minTemp === "N/A" ) {
+        fiveDayForecast[currentDayIndex].minTemp = fiveDayAPIDataList[i].main.temp_min;
       }
 
       // grab all weather types and push into seperate arrays for different days
-      weatherTypes[currentDayIndex].push(
-        fiveDayAPIDataList[i].weather[0].description
-      );
+      weatherTypes[currentDayIndex].push(fiveDayAPIDataList[i].weather[0].description);
       weatherIcon[currentDayIndex].push(fiveDayAPIDataList[i].weather[0].icon);
     }
 
@@ -126,13 +105,8 @@ class UpcomingWeatherCardContainer extends React.Component {
   };
 
   findMostCommonString = strings => {
-    return strings
-      .sort(
-        (a, b) =>
-          strings.filter(v => v === a).length -
-          strings.filter(v => v === b).length
-      )
-      .pop();
+    console.log(strings);
+    return strings.sort((a, b) => strings.filter(v => v === a).length - strings.filter(v => v === b).length).pop();
   };
 
   render = () => {
