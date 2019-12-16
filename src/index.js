@@ -51,9 +51,7 @@ class App extends React.Component {
         updatedCountry = this.state.locationCountry;
     }
     this.setState({
-      locationDate: new Date(
-        new Date() + offsetHours * 3600 * 1000
-      ).toDateString(),
+      locationDate: new Date(new Date() + offsetHours * 3600 * 1000).toDateString(),
       locationCountry: updatedCountry
     });
   };
@@ -80,7 +78,7 @@ class App extends React.Component {
             </p>
           </div>
           <div className="current-weather">
-            <CurrentWeather />
+            <CurrentWeather location={this.state.location} />
           </div>
           <div className="upcoming-weather-cards">
             <UpcomingWeatherCardContainer location={this.state.location} />
