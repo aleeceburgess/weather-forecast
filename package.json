@@ -1,11 +1,13 @@
 {
-  "name": "five-day-weather",
+  "name": "5-day-weather-forecast",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "chart.js": "2.9.3",
     "react": "16.8.6",
+    "react-chartjs-2": "2.8.0",
     "react-dom": "16.8.6",
     "react-lottie": "1.2.3",
     "react-scripts": "3.0.1"

@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import UpcomingWeatherCardContainer from "./Components/UpcomingWeatherCard/UpcomingWeatherCardContainer";
 import CurrentWeather from "./Components/CurrentWeather/CurrentWeatherContainer";
 import Header from "./Components/Header/Header";
+import LineGraph from "./Components/LineGraph/LineGraph";
 
 import "./styles/main.css";
 
@@ -51,7 +52,9 @@ class App extends React.Component {
         updatedCountry = this.state.locationCountry;
     }
     this.setState({
-      locationDate: new Date(new Date() + offsetHours * 3600 * 1000).toDateString(),
+      locationDate: new Date(
+        new Date() + offsetHours * 3600 * 1000
+      ).toDateString(),
       locationCountry: updatedCountry
     });
   };
@@ -63,6 +66,12 @@ class App extends React.Component {
       });
       this.getLocalDate(newLocation);
     }
+  };
+
+  getUpcomingTempForGraph = temps => {
+    this.setState({
+      upcomingTemps: temps
+    });
   };
 
   render() {
@@ -81,9 +90,13 @@ class App extends React.Component {
             <CurrentWeather location={this.state.location} />
           </div>
           <div className="upcoming-weather-cards">
-            <UpcomingWeatherCardContainer location={this.state.location} />
+            <UpcomingWeatherCardContainer
+              location={this.state.location}
+              getUpcomingTempForGraph={this.getUpcomingTempForGraph}
+            />
           </div>
         </div>
+        <LineGraph upcomingTemps={this.state.upcomingTemps} />
       </div>
     );
   }

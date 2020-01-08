@@ -63,7 +63,8 @@ datalist option {
   fill: white;
 }
 
-.weather-widget {
+.weather-widget,
+.graphContainer {
   margin: 20px auto;
   width: 800px;
   display: flex;

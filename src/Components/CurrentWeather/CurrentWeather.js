@@ -15,10 +15,10 @@ export class CurrentWeather extends React.Component {
         </p>
         <div className="temps">
           <p className="high-temp">
-            {Math.floor(this.props.currentWeather.maxTemp)}°
+            High: {Math.floor(this.props.currentWeather.maxTemp)}°
           </p>
           <p className="low-temp">
-            {Math.floor(this.props.currentWeather.minTemp)}°
+            Low: {Math.floor(this.props.currentWeather.minTemp)}°
           </p>
         </div>
       </div>
